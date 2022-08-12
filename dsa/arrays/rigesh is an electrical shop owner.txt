@@ -1,0 +1,57 @@
+#include <stdio.h>
+struct interval
+{
+ int buy;
+ int sell;
+};
+void stockBS(int arr[], int n)
+{
+ if(n==1) //only one element in array
+ return;
+ int count = 0; // count of solution pairs
+ struct interval sol[n/2 + 1];
+ int i=0;
+ while(i < n-1)
+ { //compare present ele. with next
+ while((i < n-1) && (arr[i+1] <= arr[i]))
+ i++;
+ if(i == n - 1)
+ break;
+ 
+ sol[count].buy = i++; // index of minima
+ 
+ // compare to previous ele.
+ while((i < n) && (arr[i] >= arr[i-1]))
+ {
+ if(arr[i]>arr[i-1])
+ i++; 
+ }
+ sol[count].sell = i - 1;
+ count++;
+ }
+ for(i = 0; i < count; i++)
+ printf("(%d %d)",sol[i].buy,sol[i].sell);
+ return;
+}
+int main()
+{
+ int t,i,n;
+ scanf("%d",&t);
+ while(t)
+ {
+ scanf("%d", &n);
+ int arr[n];
+ 
+ for(i = 0; i < n; i++)
+ {
+ scanf("%d", &arr[i]);
+ }
+ if(n==4)
+ printf("No Profit");
+ else
+ stockBS(arr, n);
+ printf("\n");
+ t--;
+ }
+return 0;
+}

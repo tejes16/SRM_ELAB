@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main()
+{
+    int n,i,j,k,c=0;
+    scanf("%d",&n);
+    int array[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&array[i]);
+    }
+    scanf("%d",&k);
+    for(i=0;i<n;i++){
+        for(j=i+1;j<n;j++){
+             if(array[i]+array[j]==k){
+                printf("[%d %d]\n",array[i],array[j]);
+                c=c+1;
+            }
+        }
+    }
+    printf("Total Number of Pairs:%d",c);
+	return 0;
+}

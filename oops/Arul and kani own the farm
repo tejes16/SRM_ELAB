@@ -1,0 +1,15 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    float rad;
+    float PI=3.14,area,ci;
+    cin>>rad;
+    area=PI*rad*rad;
+    ci=2*PI*rad;
+   cout <<fixed<<setprecision(2)<< area << '\n';
+    cout << ci;
+
+	return 0;
+}
